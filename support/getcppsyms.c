@@ -422,6 +422,12 @@ main ()
 #if defined (vax)
   printf (" -Dvax");
 #endif /* vax */
+#if defined (__x86_64)
+  printf (" -D__x86_64");
+#endif /* __x86_64 */
+#if defined (__x86_64__)
+  printf (" -D__x86_64__");
+#endif /* __x86_64__ */
 
   printf ("\n");
   exit (0);

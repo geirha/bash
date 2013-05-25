@@ -76,6 +76,32 @@
 #define MACHINE_CFLAGS
 
 /* **************************************************************** */
+/*                                                                  */
+/*                      x86 64-bit machines                         */
+/*                                                                  */
+/* **************************************************************** */
+
+#if defined (__x86_64__) && defined (__linux__)
+#  define M_MACHINE "x86_64"
+#  define M_OS "Linux"
+#  define SYSDEP_CFLAGS -DHAVE_GETDTABLESIZE -DHAVE_BCOPY \
+			-DHAVE_GETPW_DECLS -DHAVE_GETHOSTNAME
+#  define REQUIRED_LIBRARIES
+#  define HAVE_GETGROUPS
+#  define HAVE_STRERROR
+#  define VOID_SIGHANDLER
+#  define HAVE_SYS_SIGLIST
+#  define SEARCH_LIB_NEEDS_SPACE
+#  if defined (__GNUC__)
+#    define HAVE_FIXED_INCLUDES
+#  endif /* __GNUC__ */
+#  undef USE_GNU_MALLOC
+#  undef HAVE_SETLINEBUF
+#  undef HAVE_GETWD
+#endif  /* __x86_64__ && __linux__ */
+
+
+/* **************************************************************** */
 /*								    */
 /*			Sun Microsystems Machines	      	    */
 /*								    */
@@ -889,8 +915,6 @@
 #    define HAVE_STRERROR
 #    define VOID_SIGHANDLER
 #    define HAVE_SYS_SIGLIST
-#    define HAVE_VFPRINTF
-#    define HAVE_VARARGS_H
 #    define SEARCH_LIB_NEEDS_SPACE
 #    if defined (__GNUC__)
 #      define HAVE_FIXED_INCLUDES
