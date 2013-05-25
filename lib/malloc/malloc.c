@@ -879,6 +879,7 @@ internal_free (mem, file, line, flags)
   busy[nunits] = 0;
 
 free_return:
+  ;            /* Empty statement in case this is the end of the function */
 
 #ifdef MALLOC_STATS
   _mstats.nmalloc[nunits]--;
